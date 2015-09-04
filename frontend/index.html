@@ -1,0 +1,51 @@
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />    
+    <title>Angular + Rails = ❤</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+    <script src="/modules/angular-contentful.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/myApp.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="app-container">
+        <div id="app-header">
+            <div class="xl-box">
+                <h1>Angular + Rails = ❤ <small></small></h1>
+            </div>
+        </div>
+        <div id="app-content">
+            <div class="xl-box">
+
+                <section>
+                    <div class="xl-box">
+
+                        <ul style="list-style: none;" contentful-entries="'content_type=6j3jshY25OQEqMoMsOiAC0'">
+                            <li style="padding: 1em;" ng-repeat="user in $contentfulEntries.items">
+                                {{ user.fields.name }}
+                                <br>
+                                <small>{{ user.fields.job }}</small>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="xl-box">
+
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <a class="footer-link" href="http://www.xrlabs.de">► xrlabs</a>
+    </div>
+
+</body>
+</html>
