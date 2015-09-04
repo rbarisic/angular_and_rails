@@ -20,8 +20,8 @@ table tr:nth-Child(2n) {
 }
 
 #app-header {
-    color: #fff;
-    background: #638fac;
+    color: #a12f4d;
+    background: #fdff6e;
 
     width: 100%;
 }
@@ -29,6 +29,20 @@ table tr:nth-Child(2n) {
 #app-header h1 {
     padding: 0;
     margin: 0.4em 0 0.2em 0 ;
+}
+
+#app-header a {
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+    text-decoration: none;
+    font-style: italic;
+    color: #e7278a;
+}
+
+#app-header a:hover {
+    color: #b42c8f;
+    text-decoration: underline;
 }
 
 #app-content {
