@@ -2,12 +2,14 @@
     <head>
         <meta charset="utf-8" />    
         <title>Angular + Rails = ❤</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-        <link rel="stylesheet" href="stylesheet.css">
-        <script src="/lib/jquery-2.1.4.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+        <link rel="stylesheet" href="/stylesheets/normalize-3.0.3.min.css">
+        <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+        <script src="/lib/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/lib/angular-1.4.5.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Load Modules -->
+        <script src="/modules/angular-route-1.4.5.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="/modules/angular-contentful.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="/myApp.js" type="text/javascript"></script>
+        <script src="/myApp.js" type="text/javascript" charset="utf-8"></script>
     </head>
 
     <body>
@@ -16,61 +18,18 @@
                 <div class="xl-box">
                     <h1>Angular + Rails = ❤ <small></small></h1>
                     <p>Using the mighty magic of <a href="https://angularjs.org/">AngularJS</a> and <a href="http://rubyonrails.org/">Ruby on Rails</a> combined, we create a vortex of godliness.</p>
+                    <hr />
+                    <a href="/authors/">Authors</a>
                 </div>
             </div>
-            <div id="app-content">
+            <div id="app-content" ng-controller="mainCtrl as main">
                 <div class="xl-box">
-                    
-            <section ng-controller="articlesCreateCtrl">
-                <div class="xl-box">
-                    <div class="l-box" ng-show="message">
-                        {{ message }}
-                    </div>
+                    <pre>$location.path() = {{main.$location.path()}}</pre>
+                    <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
+                    <pre>$route.current.params = {{main.$route.current.params}}</pre>
+                    <pre>$routeParams = {{main.$routeParams}}</pre>
 
-                    {{ status }}
-
-                    <div ng-show="formData.title">
-                        LOL
-                    </div>
-
-                    <form ng-submit="processForm()">
-                        <div id="name-group" class="l-box">
-                            <label>Title</label>
-                            <br />
-                            <input type="text" name="title" ng-model="formData.article['title']">
-                        </div>
-
-                        <div id="content-group" class="l-box">
-                            <label>Content</label>
-                            <br />
-                            <textarea name="content" ng-model="formData.article['content']"></textarea>
-                        </div>
-
-                        <div id="author-group" class="l-box" ng-controller="getAuthorsCtrl">
-                            <label>Author</label>
-                            <br />
-                            <select ng-model="formData.article['author']">
-                                <option style="display:none" value="">select an Author</option>
-                                <option ng-repeat="author in authors">{{ author.name }}</option>
-                            </select>
-                        </div>
-
-                        <button type="submit">
-                            Submit
-                        </button>
-                    </form>
-
-                    <pre>{{ formData | json }}</pre>
-
-                </div>
-            </section>
-
-                    <section ng-controller="articlesIndexCtrl">
-                        <div class="xl-box">
-                            {{ response }}
-                        </div>
-                    </section>
-
+                    <div ng-view></div>
                 </div>
             </div>
         </div>

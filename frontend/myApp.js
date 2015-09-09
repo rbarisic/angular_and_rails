@@ -1,17 +1,44 @@
+"use strict";
+
 (function () {
 
     // define this module
-    var myApp = angular.module('myApp', []);
+    var myApp = angular.module('myApp', [
+        'ngRoute',
+        // 'myApp.createAuthor',
+        // 'myApp.createArticle',
+        // 'myApp.showArticles'
+    ])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: '/app/views/articleCreate.html',
+                controller:  'articleCreateCtrl'
+            })
+            .when('/authors/', {
+                templateUrl: '/app/views/authorIndex.html',
+                controller:  'authorShowCtrl'
+            })
+            .otherwise({templateUrl: '/app/views/authorIndex'});
+    });
+
     var serverUrl = 'http://localhost:3000';    
 
     myApp
-        .controller('articlesIndexCtrl', function($scope, $http) {
+        .controller('mainCtrl', function($route, $routeParams, $location) {
+            this.$route = $route;
+            this.$location = $location;
+            this.$routeParams = $routeParams;
+        })
+
+    myApp
+        .controller('articleIndexCtrl', function($scope, $http) {
             $http.get(serverUrl)
         })
 
       // create angular controller and pass in $scope and $http
       myApp
-        .controller('articlesCreateCtrl', function($scope, $http) {
+        .controller('articleCreateCtrl', function($scope, $http) {
 
             // create a blank object to hold our form information
             // $scope will allow this to pass between controller and view
@@ -39,7 +66,7 @@
         });
 
     myApp
-        .controller('getAuthorsCtrl', function($scope, $http) {
+        .controller('authorShowCtrl', function($scope, $http) {
 
             var getAuthorsRequest = {
                 method:     'GET',

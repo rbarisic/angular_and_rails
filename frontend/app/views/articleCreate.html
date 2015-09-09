@@ -1,0 +1,41 @@
+<div class="xl-box">
+    <div class="l-box" ng-show="message">
+        {{ message }}
+    </div>
+
+    {{ status }}
+
+    <div ng-show="formData.title">
+        LOL
+    </div>
+
+    <form ng-submit="processForm()">
+        <div id="name-group" class="l-box">
+            <label>Title</label>
+            <br />
+            <input type="text" name="title" ng-model="formData.article['title']">
+        </div>
+
+        <div id="content-group" class="l-box">
+            <label>Content</label>
+            <br />
+            <textarea name="content" ng-model="formData.article['content']"></textarea>
+        </div>
+
+        <div id="author-group" class="l-box" ng-controller="authorShowCtrl">
+            <label>Author</label>
+            <br />
+            <select ng-model="formData.article['author']">
+                <option style="display:none" value="">select an Author</option>
+                <option ng-repeat="author in authors">{{ author.name }}</option>
+            </select>
+        </div>
+
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+
+    <pre>{{ formData | json }}</pre>
+
+</div>
