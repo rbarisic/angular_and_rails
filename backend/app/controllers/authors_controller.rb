@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
   
   # GET /authors
   def index
-    @authors = author.all
+    @authors = Author.all
     render json: @authors
   end
 
@@ -14,7 +14,7 @@ class AuthorsController < ApplicationController
 
   # POST /authors
   def create
-    @author = author.new(author_params)
+    @author = Author.new(author_params)
 
     if @author.save
       render json: @author, :status => :created, :location => @author

@@ -46,10 +46,13 @@
                             <textarea name="content" ng-model="formData.article['content']"></textarea>
                         </div>
 
-                        <div id="author-group" class="l-box">
+                        <div id="author-group" class="l-box" ng-controller="getAuthorsCtrl">
                             <label>Author</label>
                             <br />
-                            <input type="text" name="author" ng-model="formData.article['author']">
+                            <select ng-model="formData.article['author']">
+                                <option style="display:none" value="">select an Author</option>
+                                <option ng-repeat="author in authors">{{ author.name }}</option>
+                            </select>
                         </div>
 
                         <button type="submit">
