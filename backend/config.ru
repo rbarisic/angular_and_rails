@@ -25,6 +25,5 @@ end
 
 puts "CORS Management loaded"
 
-
 # GO, GO, GO!
 run Rails.application

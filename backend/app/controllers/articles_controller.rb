@@ -17,9 +17,6 @@ class ArticlesController < ApplicationController
   def create
 
     # @author = Author.find_by(name: params['article']['author'])
-    
-    puts Author.find_by(name: params['article']['author'])
-
     # puts article_params['author']
     @article = Article.new(
       title: params['article']['title'],
